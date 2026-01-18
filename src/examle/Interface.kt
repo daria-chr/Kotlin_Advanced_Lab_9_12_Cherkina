@@ -1,3 +1,5 @@
+package examle
+
 interface Movable{
     var speed: Int
     val model: String
@@ -75,12 +77,12 @@ class WorkingStudent(val name: String):Worker,Student {
         val airCraft = AirCraft("Boeing", "243")
     }
 }
-//        val artem = WorkingStudent("Артем")
+//        val artem = examle.WorkingStudent("Артем")
 
-//    val car=Car()
-//    val  aircraft=AirCraft()
-//    travel(obj = car)
-//    travel(obj = aircraft)
+//    val car=examle.Car()
+//    val  aircraft=examle.AirCraft()
+//    examle.travel(obj = car)
+//    examle.travel(obj = aircraft)
 //    car.move()
 //    aircraft.move()
 

@@ -21,14 +21,38 @@ sealed class  NetworkResult {
         }
     }
 
-    fun main() {
-        val success = NetworkResult.Success("Данные получены")
-        val error = NetworkResult.Error("Сервер не отвечает", 500)
-        val loading = NetworkResult.Loading
-        handleResult(success)
-        handleResult(error)
-        handleResult(loading)
-
-
+    sealed class OrderStatus {
+        object Created : OrderStatus()
+        object Paid : OrderStatus()
+        object Shipped : OrderStatus()
+        data class Cancelled(val reason: String) : OrderStatus()
     }
-}
+
+    fun HandleOrder(status: OrderStatus) {
+        when (status) {
+            OrderStatus.Created -> println("Заказ создан")
+            OrderStatus.Paid -> println("Заказ оплачен")
+            OrderStatus.Shipped -> println("Заказ отправлен")
+            is OrderStatus.Cancelled -> println("Отменен: ${status.reason}")
+        }
+    }
+
+
+        fun main() {
+            val success = NetworkResult.Success("Данные получены")
+            val error = NetworkResult.Error("Сервер не отвечает", 500)
+            val loading = NetworkResult.Loading
+            handleResult(success)
+            handleResult(error)
+            handleResult(loading)
+            HandleOrder(OrderStatus.Created)
+            HandleOrder(OrderStatus.Paid)
+            HandleOrder(OrderStatus.Shipped)
+            HandleOrder(OrderStatus.Cancelled("Нет товара на складе"))
+
+
+
+
+        }
+    }
+

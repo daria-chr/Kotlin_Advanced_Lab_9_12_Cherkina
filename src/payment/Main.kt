@@ -1,5 +1,7 @@
 package payment
 
+
+
 fun main(){
     val processor= PaymentProcessor()
     val payment=listOf(
@@ -26,4 +28,7 @@ fun main(){
     println("Платеж 1: $payment1")
     println("Платеж 2: $payment2")
     println("Одинаковые? ${payment1==payment2}")
+
+
+
 }

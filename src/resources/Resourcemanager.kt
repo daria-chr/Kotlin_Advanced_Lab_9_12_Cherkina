@@ -16,15 +16,5 @@ class Resourcemanager {
         println("ресурсы базы")
         resources.forEach { println("${it.name}:${it.amount}") }
     }
-}
-fun main(){
-    val manager=Resourcemanager()
-    manager.add(OutpostResource(1, "Minerals", 120))
-    manager.add(OutpostResource(2, "Gas", 40))
-    val generator= EnergyGenerator()
-    val lab= ResearchLab()
-    generator.performAction(manager)
-    lab.performAction(manager)
-    println()
-    manager.printAll()
+    fun getAll(): List<OutpostResource> =resources.toList()
 }
